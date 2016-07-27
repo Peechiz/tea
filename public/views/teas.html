@@ -1,0 +1,65 @@
+
+<div>
+  <form action="">
+    <label for="">Search by category: </label>
+    <select ng-model="search.categories">
+      <option value="">none</option>
+      <option disabled="">-------</option>
+      <option ng-repeat="cat in tea.data.categories" value="{{cat}}">{{cat}}</option>
+    </select>
+    <label for="">Search by name: </label>
+    <input type="text" ng-model="search.name">
+  </form>
+</div>
+
+<div style="position: relative">
+  <a class="btn btn-danger tab" href="/#/cart"><strong>Checkout</strong> | Bag: {{tea.cart.items.length}}</a>
+  <table class="table table-bordered col-md-12">
+    <thead>
+      <tr>
+        <th class="col-md-3">Tea</th>
+        <th class="col-md-9">Information
+          <span class="pull-right">
+            Sort by Price:
+            <select ng-model="reverse">
+              <option value="">Lowest</option>
+              <option value="true">Highest</option>
+            </select>
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="entry in tea.data.items | filter : search | orderBy : 'price' : reverse">
+        <td><img ng-src="{{entry.imageUrl}}"></td>
+        <td>
+          <div>
+            <h3>{{entry.name}}</h3>
+          </div>
+          <div style="position: relative;">
+            <div class="tab">
+              <h3>Quantity: </h3>
+              <select ng-model="tea[entry._id]">
+                <option ng-repeat="val in [2,3,4,5,6,7,8,9,10]" value="{{val}}">{{val}}</option>
+              </select>
+              <button type="button" class="btn btn-warning" ng-click="tea.add(entry)">Add to Bag</button>
+            </div>
+            <ul>
+              <li><strong>Price: </strong>{{(entry.price/100)| currency }}</li>
+              <li><strong>Caffeine Scale: </strong>{{entry.caffeineScale}}</li>
+              <li><strong>Ingredients: </strong>{{entry.ingredients}}</li>
+              <li><strong>Rating: </strong>{{entry.rating}}</li>
+              <li><strong>In Stock? </strong>{{entry.inStock}}</li>
+              <li>
+                <strong>Categories: </strong>
+                <ul>
+                  <li ng-repeat="category in entry.categories">{{category}}</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

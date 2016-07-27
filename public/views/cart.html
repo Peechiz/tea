@@ -1,0 +1,48 @@
+<h3>My Shopping Bag</h3>
+
+<div style="position: relative" ng-controller="cartController as c">
+  <div class="tab">
+    <h3>Total: {{c.total/100 | currency}}</h3>
+  </div>
+  <table class="table table-bordered col-md-12">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Sub-total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in c.cart.items">
+        <td>
+          <h3>{{item.name}}</h3>
+          <p>
+            <img ng-src="{{c.data.get(item._id).imageUrl}}">
+          </p>
+          <ul>
+            <li><strong>Caffeine Scale: </strong>{{c.data.get(item._id).caffeineScale}}</li>
+            <li><strong>Ingredients: </strong>{{c.data.get(item._id).ingredients}}</li>
+            <li><strong>Rating: </strong>{{c.data.get(item._id).rating}}</li>
+          </ul>
+
+        </td>
+
+        <td ng-init="c.edit[item._id]=true" ng-show="c.edit[item._id]">{{item.amt}}</td>
+        <td ng-hide="c.edit[item._id]">
+          <select ng-model="item.amt">
+            <option ng-repeat="val in [1,2,3,4,5,6,7,8,9,10]" value="{{val}}">{{val}}</option>
+          </select>
+        </td>
+        <td><strong>{{(item.amt * c.data.get(item._id).price)/100 | currency }}</strong></td>
+        <td ng-show="c.edit[item._id]">
+          <button ng-click="c.edit[item._id]=!c.edit[item._id]" class="btn btn-warning">Edit</button>
+          <button ng-click="c.cart.removeItem(item._id)" class="btn btn-danger">Remove</button>
+        </td>
+        <td ng-hide="c.edit[item._id]">
+          <button ng-click="c.save(item._id)" class="btn btn-success"> Save</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

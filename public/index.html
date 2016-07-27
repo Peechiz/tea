@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>TEA, SON</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script src="https://code.angularjs.org/1.4.4/angular-route.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/routes.js"></script>
+  <script type="text/javascript" src="js/controllers/teasController.js"></script>
+  <script type="text/javascript" src="js/controllers/cartController.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+
+<body ng-app="tea">
+  <div class="container">
+
+    <div class="topbar"></div>
+
+    <h1 class="text-center">YOU REQUIRE TEA, MORTAL</h1>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/#/">Home</a>
+          </li>
+          <li>
+            <a href="">About</a>
+          </li>
+          <li>
+            <a href="">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div ng-view></div>
+
+  </div>
+</body>
+
+</html>

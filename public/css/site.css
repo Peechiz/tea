@@ -1,0 +1,32 @@
+.topbar {
+  height: 20px;
+  background-color: green;
+}
+
+.tab {
+  position: absolute;
+  right: 0;
+  top: -36px;
+}
+
+.tab h3 {
+  display: inline;
+}
+
+table ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+table ul ul {
+  list-style-type:disc;
+  padding-left: 40px;
+}
+
+body {
+  background-color: rgba(210,240,220,.3)
+}
+
+table {
+  background-color: white;
+}
